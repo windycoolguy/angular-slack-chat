@@ -1,0 +1,71 @@
+<div class="resetpass-form-container">
+  <div class="form-container">
+    <form #resetpassForm="ngForm" (ngSubmit)="onFormSubmit(resetpassForm)" autocomplete="false" class="form">
+      <h4 class="form-header">Reset Password?
+        <i class="fa fa-sign-in" aria-hidden="true"></i>
+      </h4>
+      <!-- <div class="control">
+        <label for="email">Email</label>
+        <input ngModel #email="ngModel" email="true" name="email" required id="email" type="text">
+        <div class="form-error" *ngIf="email.touched && !email.valid">
+          <div *ngIf="email.errors.required">
+            Email is required
+          </div>
+          <div *ngIf="email.errors.email && !email.errors.required">
+            Invalid Email address.
+          </div>
+        </div>
+      </div> -->
+      <div class="control">
+        <label for="oldpassword">Old Password</label>
+        <input ngModel #password="ngModel" minlength="6" name="oldpassword" required autocomplete="old-password" id="oldpassword" type="password">
+        <!-- <div class="form-error" *ngIf="oldpassword.touched && !oldpassword.valid"> -->
+          <!-- <div *ngIf="password.errors.required">
+            Password is required
+          </div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters long.
+          </div>
+          <div *ngIf="password.errors.pattern">
+            Password must all characters.
+          </div> -->
+        <!-- </div> -->
+      </div>
+      <div class="control">
+        <label for="password">New Password</label>
+        <input ngModel #password="ngModel" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" minlength="6" name="password" required autocomplete="new-password" id="password" type="password">
+        <div class="form-error" *ngIf="password.touched && !password.valid">
+          <div *ngIf="password.errors.required">
+            Password is required
+          </div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters long.
+          </div>
+          <div *ngIf="password.errors.pattern">
+            Password must all characters.
+          </div>
+        </div>
+      </div>
+      <div class="control">
+        <label for="ConfirmPassword">Confirm Password</label>
+        <input ngModel #confirmpassword="ngModel" name="confirmpassword" required autocomplete="new-password" id="confirmpassword" type="password">
+        <div class="form-error" [hidden]="confirmpassword.value == password.value">
+          <div class="alert alert-danger">
+            Password mismatch
+          </div>
+        </div>
+      </div>
+      <div class="control">
+        <button [disabled]="resetpassForm.invalid" class="btn" type="submit">Reset Password</button>
+        <!-- <p class="alter-way">
+          <a [routerLink]="'/login'">Already have an account?</a>
+        </p> -->
+      </div>
+      <div class="social-links-container">
+        <!-- <div class="hr"></div> -->
+        <!-- <div class="tag">Or, Sign in with</div> -->
+        <!-- <app-social-links></app-social-links> -->
+      </div>
+    </form>
+  </div>
+</div>
